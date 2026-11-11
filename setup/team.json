@@ -1,0 +1,17 @@
+{
+  "_note": "Replace the three placeholder teammates with real names + SRNs, then rebuild (see setup/README.md). srn3 = last 3 digits of the SRN.",
+  "members": [
+    {"key": "M1", "name": "Santosh Cheethirala", "srn": "PES1UG24CS127", "srn3": "127",
+     "email": "santosh@cusp.example", "designation": "Sales Manager",
+     "roles": ["Sales Manager", "Sales User", "Sales Master Manager", "Stock User", "Purchase User", "Accounts User", "System Manager"]},
+    {"key": "M2", "name": "Teammate Two", "srn": "PES1UG24CSXX2", "srn3": "XX2",
+     "email": "member2@cusp.example", "designation": "Accounts & MIS Lead",
+     "roles": ["Accounts Manager", "Accounts User", "Sales Manager", "Sales User", "Purchase User", "Stock User", "Report Manager"]},
+    {"key": "M3", "name": "Teammate Three", "srn": "PES1UG24CSXX3", "srn3": "XX3",
+     "email": "member3@cusp.example", "designation": "Purchase Manager",
+     "roles": ["Purchase Manager", "Purchase User", "Purchase Master Manager", "Item Manager", "Sales User", "Stock User"]},
+    {"key": "M4", "name": "Teammate Four", "srn": "PES1UG24CSXX4", "srn3": "XX4",
+     "email": "member4@cusp.example", "designation": "Warehouse & Quality Lead",
+     "roles": ["Stock Manager", "Stock User", "Quality Manager", "Sales User", "Purchase User", "Accounts User"]}
+  ]
+}

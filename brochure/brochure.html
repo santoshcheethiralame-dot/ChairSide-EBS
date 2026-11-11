@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Chairside — Product Brochure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  :root{
+    --ivory:#FAF6EE; --sand:#EFE6D6; --sand2:#E6DAC4; --teal:#0F4C4A; --teal2:#1D6B67; --mint:#D7E8E3;
+    --coral:#E2643F; --coral-soft:#F8DDD2; --ink:#1E2422; --muted:#5D6762; --line:#D9CFBD;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#ccc}
+  body{font-family:"Manrope","Segoe UI",sans-serif;color:var(--ink);font-size:9.6pt;line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .page{width:210mm;height:297mm;margin:0 auto;background:var(--ivory);position:relative;overflow:hidden;page-break-after:always;padding:17mm 16mm 18mm}
+  .page:last-child{page-break-after:auto}
+  h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:600;letter-spacing:-.01em;color:var(--teal)}
+  h2{font-size:25pt;line-height:1.08;margin-bottom:4mm}
+  h3{font-size:12.5pt;line-height:1.2;margin-bottom:1.5mm}
+  .kicker{font-size:7.6pt;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:3mm}
+  .lede{font-size:11pt;color:var(--muted);max-width:150mm;margin-bottom:7mm}
+  .folio{position:absolute;bottom:8mm;left:16mm;right:16mm;display:flex;justify-content:space-between;font-size:7.2pt;color:var(--muted);border-top:.3mm solid var(--line);padding-top:2.5mm}
+  .folio b{color:var(--teal);font-weight:700}
+  .blurb{font-size:8.2pt;color:var(--muted);font-style:italic;margin-top:2mm}
+  .pill{display:inline-block;font-size:7pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.8mm 2.4mm;border-radius:10mm}
+  .pill.ai{background:var(--coral-soft);color:#9A3A1D}
+  .pill.hu{background:var(--mint);color:var(--teal)}
+  .grid{display:grid;gap:4.5mm}
+  .card{background:#fff;border:.3mm solid var(--line);border-radius:3.5mm;padding:4.5mm 5mm}
+
+  /* cover */
+  .cover{background:var(--teal);color:var(--ivory);padding:0}
+  .cover .art{position:absolute;inset:0}
+  .cover .brand{position:absolute;top:18mm;left:18mm;display:flex;align-items:center;gap:3.5mm}
+  .cover .brand span{font-family:"Fraunces",serif;font-size:19pt;font-weight:600;color:var(--ivory)}
+  .cover .title{position:absolute;left:18mm;right:18mm;bottom:52mm}
+  .cover h1{font-size:46pt;line-height:1.0;color:var(--ivory);margin-bottom:6mm;font-weight:600}
+  .cover h1 em{font-style:italic;color:#F5B39C;font-weight:400}
+  .cover p{font-size:12.5pt;max-width:135mm;color:#CFE3DE}
+  .cover .meta{position:absolute;left:18mm;right:18mm;bottom:16mm;display:flex;justify-content:space-between;font-size:8pt;color:#A9CBC4;border-top:.3mm solid #2F6D69;padding-top:3mm}
+
+  /* problem */
+  .pain{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;margin:6mm 0}
+  .pain .card h3{font-size:11.5pt}
+  .pain .num{font-family:"Fraunces",serif;font-size:22pt;color:var(--coral);line-height:1;margin-bottom:2mm}
+  .why{display:grid;grid-template-columns:1.05fr 1fr;gap:7mm;align-items:center;margin-top:4mm}
+  .why ul{list-style:none}
+  .why li{padding:2.2mm 0 2.2mm 6mm;border-bottom:.3mm solid var(--line);position:relative}
+  .why li:before{content:"";position:absolute;left:0;top:4.2mm;width:2.4mm;height:2.4mm;border-radius:50%;background:var(--coral)}
+
+  /* modules */
+  .mods{grid-template-columns:repeat(4,1fr)}
+  .mod{background:#fff;border:.3mm solid var(--line);border-radius:3.5mm;padding:3.5mm 4mm}
+  .mod .ic{width:10mm;height:10mm;margin-bottom:2.5mm}
+  .mod h3{font-size:10.8pt}
+  .mod .brief{font-size:6.8pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--coral);margin-bottom:1.2mm}
+  .mod p{font-size:8.2pt;color:var(--muted);line-height:1.42}
+  .services{margin-top:4mm;background:var(--sand);border-radius:4mm;padding:5mm 6mm;display:grid;grid-template-columns:repeat(4,1fr);gap:5mm}
+  .services h3{font-size:10.5pt}
+  .services p{font-size:8.2pt;color:var(--muted)}
+
+  /* agents */
+  .agents{grid-template-columns:1fr 1fr;gap:4mm}
+  .agent{background:#fff;border:.3mm solid var(--line);border-radius:3.5mm;padding:4mm 4.5mm;display:grid;grid-template-columns:13mm 1fr;gap:3.5mm}
+  .agent .face{width:13mm;height:13mm}
+  .agent h3{font-size:11.5pt;margin-bottom:.5mm}
+  .agent .mod-tag{font-size:7pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5mm}
+  .agent p.does{font-size:8.3pt;margin-bottom:2mm}
+  .agent dl{display:grid;grid-template-columns:auto 1fr;gap:1mm 2.5mm;font-size:7.9pt;line-height:1.38}
+  .agent dt{font-weight:700;white-space:nowrap}
+  .agent dt.a{color:#9A3A1D}.agent dt.h{color:var(--teal)}.agent dt.n{color:var(--ink)}
+  .agent dd{color:var(--muted)}
+  .agent.wide{grid-column:1 / span 2}
+
+  /* swimlane */
+  .lanes{margin-top:3mm}
+  .legend{display:flex;gap:4mm;margin:4mm 0 2mm}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:3.5mm;margin-top:5mm}
+  .steps .card{padding:3.5mm 4mm}
+  .steps .card b{font-family:"Fraunces",serif;color:var(--coral);font-size:13pt;margin-right:1.5mm}
+  .steps p{font-size:8pt;color:var(--muted)}
+
+  /* trust */
+  .trust{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+  .trust .card p{font-size:8.4pt;color:var(--muted)}
+  .story{background:var(--teal);color:var(--ivory);border-radius:4mm;padding:5mm 6mm}
+  .story h3{color:var(--ivory)}
+  .story p{color:#CFE3DE;font-size:8.6pt}
+  .story blockquote{font-family:"Fraunces",serif;font-size:11.5pt;color:#fff;border-left:1mm solid var(--coral);padding-left:3.5mm;margin:3mm 0}
+  .promises{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm;margin-top:5mm}
+  .promises div{border-top:.6mm solid var(--teal);padding-top:2mm;font-size:8.2pt;color:var(--muted)}
+  .promises b{display:block;color:var(--ink);font-size:8.8pt;margin-bottom:.5mm}
+
+  /* services page */
+  .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:5mm 0 7mm;position:relative}
+  .timeline div{padding:0 3mm 0 0}
+  .timeline .dot{width:4mm;height:4mm;border-radius:50%;background:var(--coral);margin-bottom:2.5mm;position:relative;z-index:2}
+  .timeline:before{content:"";position:absolute;left:2mm;right:6mm;top:1.85mm;height:.4mm;background:var(--line)}
+  .timeline h3{font-size:10.5pt}
+  .timeline p{font-size:8.1pt;color:var(--muted)}
+  .quote{background:var(--sand);border-radius:4mm;padding:6mm 7mm;display:grid;grid-template-columns:1fr 46mm;gap:6mm;align-items:center}
+  .quote blockquote{font-family:"Fraunces",serif;font-size:14pt;line-height:1.3;color:var(--teal)}
+  .quote cite{display:block;font-style:normal;font-size:8.2pt;color:var(--muted);margin-top:3mm}
+
+  /* pricing */
+  table.price{width:100%;border-collapse:separate;border-spacing:3mm 0;margin:0 -3mm}
+  table.price td{vertical-align:top;background:#fff;border:.3mm solid var(--line);border-radius:3.5mm;padding:4.5mm 4mm;width:25%}
+  table.price td.hot{background:var(--teal);color:var(--ivory);border-color:var(--teal)}
+  table.price td.hot h3,table.price td.hot .amt{color:var(--ivory)}
+  table.price .for{font-size:7.6pt;color:var(--muted);margin-bottom:3mm;min-height:7mm}
+  table.price td.hot .for,table.price td.hot li{color:#CFE3DE}
+  table.price .amt{font-family:"Fraunces",serif;font-size:20pt;color:var(--teal);line-height:1}
+  table.price .per{font-size:7.4pt;color:var(--muted);margin:1mm 0 3mm}
+  table.price td.hot .per{color:#A9CBC4}
+  table.price ul{list-style:none;font-size:7.9pt}
+  table.price li{padding:1.2mm 0;border-top:.3mm solid var(--line)}
+  table.price td.hot li{border-color:#2F6D69}
+  .bottom{display:grid;grid-template-columns:1.25fr 1fr;gap:6mm;margin-top:7mm}
+  .officers{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+  .officer{display:flex;gap:2.5mm;align-items:center;background:#fff;border:.3mm solid var(--line);border-radius:3mm;padding:2.5mm}
+  .officer .mono{width:10mm;height:10mm;border-radius:50%;background:var(--teal);color:var(--ivory);font-family:"Fraunces",serif;font-size:10pt;display:flex;align-items:center;justify-content:center;flex:none}
+  .officer b{display:block;font-size:8.5pt}
+  .officer span{font-size:7.3pt;color:var(--muted)}
+  .contact p{font-size:8.6pt;margin-bottom:1.2mm}
+  .sources{margin-top:5mm;font-size:6.9pt;color:var(--muted);line-height:1.45}
+  .sources b{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ 1 COVER -->
+<section class="page cover">
+  <svg class="art" viewBox="0 0 210 297" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="glow" cx="72%" cy="34%" r="55%"><stop offset="0" stop-color="#F5B39C" stop-opacity=".55"/><stop offset=".55" stop-color="#1D6B67" stop-opacity=".25"/><stop offset="1" stop-color="#0F4C4A" stop-opacity="0"/></radialGradient>
+    </defs>
+    <rect width="210" height="297" fill="#0F4C4A"/>
+    <circle cx="150" cy="100" r="120" fill="url(#glow)"/>
+    <g transform="translate(0,-18)">
+    <!-- window light -->
+    <g opacity=".14" fill="#FAF6EE"><path d="M118 20 L196 20 L170 150 L92 150 Z"/></g>
+    <!-- operatory lamp -->
+    <g stroke="#FAF6EE" stroke-width="1.1" fill="none" stroke-linecap="round" opacity=".9">
+      <path d="M176 18 L176 44 Q176 52 166 56 L140 66"/>
+      <ellipse cx="134" cy="69" rx="11" ry="5" transform="rotate(-18 134 69)" fill="#FAF6EE" fill-opacity=".12"/>
+    </g>
+    <path d="M128 74 L96 150 L160 150 Z" fill="#FFE6D9" opacity=".08"/>
+    <!-- dental chair line art -->
+    <g stroke="#FAF6EE" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M96 92 Q90 92 89 99 L86 121"/>                 <!-- headrest + back -->
+      <ellipse cx="96" cy="90" rx="8" ry="3.4" fill="#FAF6EE" fill-opacity=".9"/>
+      <path d="M86 121 Q85 128 92 129 L150 131 Q160 131 166 140 L170 146"/>   <!-- seat + leg rest -->
+      <path d="M86 121 L80 126"/>
+      <path d="M115 131 L115 157"/>                           <!-- column -->
+      <path d="M98 160 L132 160 Q136 160 136 157 L94 157 Q94 160 98 160 Z" fill="#FAF6EE" fill-opacity=".9"/>
+      <path d="M128 112 L148 112 Q152 112 152 116"/>           <!-- armrest -->
+      <path d="M58 104 L72 104 L72 140"/>                      <!-- tray arm -->
+      <rect x="50" y="98" width="20" height="6" rx="1.5" fill="#FAF6EE" fill-opacity=".14"/>
+    </g>
+    <!-- agent sparks -->
+    <g fill="#E2643F">
+      <path d="M158 84 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z"/>
+      <path d="M62 82 l1.2 3 3 1.2 -3 1.2 -1.2 3 -1.2 -3 -3 -1.2 3 -1.2z" opacity=".8"/>
+      <path d="M182 128 l1.2 3 3 1.2 -3 1.2 -1.2 3 -1.2 -3 -3 -1.2 3 -1.2z" opacity=".7"/>
+    </g>
+    <g stroke="#E2643F" stroke-width=".5" stroke-dasharray="1.4 1.6" fill="none" opacity=".75">
+      <path d="M160 91 Q150 105 136 112"/><path d="M63 89 Q60 96 60 104"/><path d="M181 135 Q172 140 164 141"/>
+    </g>
+    </g>
+  </svg>
+  <div class="brand">
+    <svg width="34" height="34" viewBox="0 0 48 48"><path d="M36 11 A17 17 0 1 0 36 37" fill="none" stroke="#FAF6EE" stroke-width="4.2" stroke-linecap="round"/><path d="M12 33 L33 33" stroke="#FAF6EE" stroke-width="4.2" stroke-linecap="round"/><path d="M38 6 l1.6 4 4 1.6 -4 1.6 -1.6 4 -1.6 -4 -4 -1.6 4 -1.6z" fill="#E2643F"/></svg>
+    <span>Chairside</span>
+  </div>
+  <div class="title">
+    <div class="kicker" style="color:#F5B39C">AI-native ERP · CRM · SCM for dental care</div>
+    <h1>The agents run the back office.<br><em>You stay in the chair.</em></h1>
+    <p>Chairside is the AI-native operating system for dental clinics and the supply chain behind them. Agents plan, order, check and follow up, and every action they take is limited, explained and approved where it matters.</p>
+  </div>
+  <div class="meta"><span>Chairside Labs Pvt. Ltd. · Koramangala, Bengaluru</span><span>Product brochure · 2026 edition</span></div>
+</section>
+
+<!-- ============================================================ 2 PROBLEM -->
+<section class="page">
+  <div class="kicker">01 · Why Chairside exists</div>
+  <h2>A clinic is a small hospital,<br>a shop and a warehouse.</h2>
+  <p class="lede">Most of them are run from a phone. Appointments live in WhatsApp, stock lives in someone's memory, and the accounts live in a spreadsheet updated on Sunday night.</p>
+
+  <svg viewBox="0 0 178 62" width="178mm" height="62mm" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0" y="0" width="178" height="62" rx="4" fill="#EFE6D6"/>
+    <rect x="6" y="44" width="166" height="3" rx="1" fill="#D9CFBD"/>
+    <!-- phone with chat bubbles -->
+    <rect x="16" y="10" width="20" height="34" rx="3" fill="#fff" stroke="#1E2422" stroke-width=".6"/>
+    <rect x="19" y="15" width="11" height="4" rx="1.5" fill="#D7E8E3"/><rect x="22" y="21" width="11" height="4" rx="1.5" fill="#F8DDD2"/>
+    <rect x="19" y="27" width="9" height="4" rx="1.5" fill="#D7E8E3"/><rect x="21" y="33" width="12" height="4" rx="1.5" fill="#F8DDD2"/>
+    <circle cx="35" cy="11" r="3.2" fill="#E2643F"/><text x="35" y="12.3" font-size="3.6" text-anchor="middle" fill="#fff" font-family="Manrope" font-weight="700">47</text>
+    <!-- paper register -->
+    <g transform="rotate(-6 60 30)"><rect x="46" y="16" width="30" height="26" rx="1" fill="#fff" stroke="#1E2422" stroke-width=".6"/>
+      <g stroke="#B9AE99" stroke-width=".5"><path d="M50 22h22M50 26h22M50 30h18M50 34h22M50 38h14"/></g>
+      <path d="M58 22 L58 40" stroke="#E2643F" stroke-width=".5"/></g>
+    <!-- spreadsheet -->
+    <rect x="86" y="12" width="36" height="30" rx="1.5" fill="#fff" stroke="#1E2422" stroke-width=".6"/>
+    <g stroke="#D9CFBD" stroke-width=".4"><path d="M86 18h36M86 24h36M86 30h36M86 36h36M96 12v30M108 12v30"/></g>
+    <rect x="96.3" y="24.3" width="11.5" height="5.5" fill="#F8DDD2"/><text x="102" y="28.4" font-size="3.4" text-anchor="middle" fill="#9A3A1D" font-family="Manrope" font-weight="700">#REF!</text>
+    <!-- shelf with expiring box -->
+    <rect x="132" y="14" width="34" height="2" fill="#1E2422"/><rect x="132" y="30" width="34" height="2" fill="#1E2422"/>
+    <rect x="135" y="5" width="9" height="9" fill="#D7E8E3" stroke="#0F4C4A" stroke-width=".4"/><rect x="146" y="7" width="8" height="7" fill="#D7E8E3" stroke="#0F4C4A" stroke-width=".4"/>
+    <rect x="137" y="20" width="12" height="10" fill="#F8DDD2" stroke="#E2643F" stroke-width=".5"/><text x="143" y="26.4" font-size="3" text-anchor="middle" fill="#9A3A1D" font-family="Manrope" font-weight="700">EXP</text>
+    <rect x="151" y="22" width="10" height="8" fill="#D7E8E3" stroke="#0F4C4A" stroke-width=".4"/>
+    <text x="8" y="56" font-size="3.4" fill="#5D6762" font-family="Manrope">Three apps, one notebook and a shelf nobody has checked since Diwali.</text>
+  </svg>
+  <p class="blurb">The clinic back office today, illustrated. Every icon here is a job one of our agents now does.</p>
+
+  <div class="pain">
+    <div class="card"><div class="num">01</div><h3>Treatment that never finishes</h3><p>A root canal is started, the crown is never fitted. Nobody chases the patient because nobody owns the list.</p></div>
+    <div class="card"><div class="num">02</div><h3>Stock that quietly expires</h3><p>Anaesthetic cartridges, composites and impression material all have expiry dates. Overstock wastes money; understock cancels a surgery.</p></div>
+    <div class="card"><div class="num">03</div><h3>Finance on a WhatsApp thread</h3><p>Supplier bills, GST, patient payments and lab invoices arrive on five channels and are reconciled by hand, if at all.</p></div>
+  </div>
+
+  <div class="why">
+    <div>
+      <div class="kicker">Why now</div>
+      <h3 style="font-size:15pt">Software that can act, not just record.</h3>
+      <p style="color:var(--muted)">Classic ERP stores what happened. Modern AI agents can read an appointment book, plan tomorrow's stock, draft the order and check the invoice. Clinics need that help, and they also need to stay in control of it. Chairside is built on both requirements.</p>
+    </div>
+    <ul>
+      <li>Agents work from <b>your</b> appointment book, stock and price list</li>
+      <li>Every agent action is <b>limited</b> by spend caps and allow-lists</li>
+      <li>A human approves anything clinical or costly</li>
+      <li>Every mistake becomes a rule the agent <b>cannot</b> break again</li>
+    </ul>
+  </div>
+  <div class="folio"><span><b>Chairside</b> · The agents run the back office.</span><span>02</span></div>
+</section>
+
+<!-- ============================================================ 3 PLATFORM -->
+<section class="page">
+  <div class="kicker">02 · The platform</div>
+  <h2>Eight modules. One record<br>of every chair, box and rupee.</h2>
+  <p class="lede" style="margin-bottom:5mm">The full enterprise stack (sales, procurement, inventory, warehouse, production, quality, finance and HR) in the language of a dental practice.</p>
+  <div class="grid mods">
+    <div class="mod"><svg class="ic" viewBox="0 0 40 40"><rect x="4" y="8" width="32" height="26" rx="4" fill="#D7E8E3"/><circle cx="15" cy="19" r="5" fill="#0F4C4A"/><path d="M8 31c2-5 12-5 14 0" fill="#0F4C4A"/><path d="M25 17h8M25 22h6" stroke="#0F4C4A" stroke-width="2" stroke-linecap="round"/></svg><div class="brief">Sales · CRM</div><h3>Front Desk &amp; CRM</h3><p>Patients, appointments and treatment plans priced as a ladder of options, never a single misleading number.</p></div>
+    <div class="mod"><svg class="ic" viewBox="0 0 40 40"><rect x="7" y="4" width="26" height="32" rx="3" fill="#F8DDD2"/><path d="M12 12h16M12 18h16M12 24h10" stroke="#9A3A1D" stroke-width="2" stroke-linecap="round"/><circle cx="27" cy="29" r="4" fill="#E2643F"/></svg><div class="brief">Finance</div><h3>Billing &amp; Ledger</h3><p>GST invoicing, UPI, card and EMI collection, insurance claim packs and receivables ageing in one ledger.</p></div>
+    <div class="mod"><svg class="ic" viewBox="0 0 40 40"><path d="M6 12h22l-3 14H9z" fill="#D7E8E3"/><circle cx="12" cy="31" r="3" fill="#0F4C4A"/><circle cx="23" cy="31" r="3" fill="#0F4C4A"/><path d="M28 12l3-5h4" stroke="#0F4C4A" stroke-width="2" fill="none" stroke-linecap="round"/></svg><div class="brief">Procurement</div><h3>Restock</h3><p>Supplier catalogue, contract prices, purchase orders and document matching from order to receipt to bill.</p></div>
+    <div class="mod"><svg class="ic" viewBox="0 0 40 40"><path d="M4 16 20 7l16 9v17H4z" fill="#EFE6D6"/><rect x="10" y="20" width="8" height="7" fill="#0F4C4A"/><rect x="21" y="20" width="8" height="7" fill="#1D6B67"/><rect x="15" y="27" width="10" height="6" fill="#E2643F"/></svg><div class="brief">Inventory · Warehouse</div><h3>Store &amp; Sterilisation</h3><p>Batch and expiry tracking, first-expiry-first-out picking, autoclave cycle logs and instrument kits.</p></div>
+    <div class="mod"><svg class="ic" viewBox="0 0 40 40"><path d="M12 6c-5 0-7 5-6 10 1 6 3 18 6 18 2 0 3-6 4-9h8c1 3 2 9 4 9 3 0 5-12 6-18 1-5-1-10-6-10-3 0-5 2-8 2s-5-2-8-2z" fill="#D7E8E3" stroke="#0F4C4A" stroke-width="1.6"/></svg><div class="brief">Production</div><h3>Lab Orders</h3><p>Crowns, bridges and aligners made by partner labs: prescription, shade, due date, remakes and cost.</p></div>
+    <div class="mod"><svg class="ic" viewBox="0 0 40 40"><path d="M20 4l13 5v10c0 9-6 14-13 17C13 33 7 28 7 19V9z" fill="#F8DDD2"/><path d="M14 20l4 4 8-9" stroke="#9A3A1D" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="brief">Quality</div><h3>Quality &amp; Recall</h3><p>Lot-to-patient traceability, supplier recall handling, sterilisation audits and an incident log.</p></div>
+    <div class="mod"><svg class="ic" viewBox="0 0 40 40"><circle cx="13" cy="13" r="5" fill="#0F4C4A"/><circle cx="27" cy="13" r="5" fill="#1D6B67"/><path d="M4 32c1-8 17-8 18 0M18 32c1-8 17-8 18 0" fill="#D7E8E3"/></svg><div class="brief">HR</div><h3>Team &amp; Chairs</h3><p>Rosters, chair utilisation, hygienist scheduling, leave and a payroll export your accountant can use.</p></div>
+    <div class="mod"><svg class="ic" viewBox="0 0 40 40"><rect x="4" y="6" width="32" height="28" rx="4" fill="#EFE6D6"/><rect x="10" y="20" width="4" height="9" fill="#1D6B67"/><rect x="18" y="14" width="4" height="15" fill="#0F4C4A"/><rect x="26" y="10" width="4" height="19" fill="#E2643F"/></svg><div class="brief">Analytics</div><h3>Pulse</h3><p>The owner's dashboard: revenue per chair-hour, recall recovery, near-expiry stock and cash position.</p></div>
+  </div>
+
+  <svg viewBox="0 0 178 50" width="178mm" height="44mm" style="margin-top:5mm" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <rect width="178" height="50" rx="4" fill="#0F4C4A"/>
+    <rect x="58" y="6" width="62" height="40" rx="3" fill="#FAF6EE"/>
+    <rect x="62" y="10" width="54" height="5" rx="1" fill="#EFE6D6"/><text x="64" y="13.7" font-size="3" font-family="Manrope" font-weight="700" fill="#0F4C4A">Pulse · Today</text>
+    <rect x="62" y="17" width="16" height="10" rx="1.2" fill="#fff" stroke="#D9CFBD" stroke-width=".3"/><text x="64" y="21" font-size="2.2" fill="#5D6762" font-family="Manrope">Chairs busy</text><text x="64" y="25.5" font-size="3.6" fill="#0F4C4A" font-family="Fraunces">6 / 7</text>
+    <rect x="81" y="17" width="16" height="10" rx="1.2" fill="#fff" stroke="#D9CFBD" stroke-width=".3"/><text x="83" y="21" font-size="2.2" fill="#5D6762" font-family="Manrope">Recalls booked</text><text x="83" y="25.5" font-size="3.6" fill="#0F4C4A" font-family="Fraunces">14</text>
+    <rect x="100" y="17" width="16" height="10" rx="1.2" fill="#F8DDD2"/><text x="102" y="21" font-size="2.2" fill="#9A3A1D" font-family="Manrope">Needs you</text><text x="102" y="25.5" font-size="2.9" fill="#9A3A1D" font-family="Fraunces">2 approvals</text>
+    <g fill="#1D6B67"><rect x="64" y="38" width="4" height="5"/><rect x="70" y="35" width="4" height="8"/><rect x="76" y="33" width="4" height="10"/><rect x="82" y="36" width="4" height="7"/><rect x="88" y="31" width="4" height="12"/></g>
+    <rect x="94" y="29" width="4" height="14" fill="#E2643F"/>
+    <path d="M102 41 L108 36 L113 38" stroke="#0F4C4A" stroke-width=".6" fill="none"/>
+    <text x="8" y="16" font-size="4.6" fill="#FAF6EE" font-family="Fraunces">One screen</text>
+    <text x="8" y="22" font-size="3" fill="#CFE3DE" font-family="Manrope">for chairs, stock, cash</text>
+    <text x="8" y="26" font-size="3" fill="#CFE3DE" font-family="Manrope">and recalls.</text>
+    <text x="126" y="16" font-size="3" fill="#CFE3DE" font-family="Manrope">Works on a tablet at</text>
+    <text x="126" y="20" font-size="3" fill="#CFE3DE" font-family="Manrope">the front desk and on</text>
+    <text x="126" y="24" font-size="3" fill="#CFE3DE" font-family="Manrope">the owner's phone.</text>
+  </svg>
+  <p class="blurb">Pulse, the owner's view. Approvals the agents are waiting on are always one tap away.</p>
+
+  <div class="services">
+    <div><h3>Implementation</h3><p>Two-week onboarding. We migrate your patient list, price list and stock from Excel or your old software.</p></div>
+    <div><h3>Training</h3><p>On-site training at the chair for doctors, assistants and front desk, in Kannada, English or Hindi.</p></div>
+    <div><h3>Support</h3><p>WhatsApp and phone support with a 4-hour response target on working days.</p></div>
+    <div><h3>Agent Tuning</h3><p>A monthly review of what your agents did, what you corrected, and which new rules now apply.</p></div>
+  </div>
+  <div class="folio"><span><b>Chairside</b> · Offerings &amp; features</span><span>03</span></div>
+</section>
+
+<!-- ============================================================ 4 AGENTS -->
+<section class="page">
+  <div class="kicker">03 · Meet the agents</div>
+  <h2>Five agents. Each with a job,<br>a limit and a human checkpoint.</h2>
+  <p class="lede" style="margin-bottom:5mm">An agent in Chairside reasons over your data, plans the next steps and carries them out. Every agent card states what it may do alone, where a person must approve, and what it will never do.</p>
+  <div class="grid agents">
+    <div class="agent">
+      <svg class="face" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#F8DDD2"/><path d="M11 21a9 9 0 0 1 18 0" stroke="#9A3A1D" stroke-width="2.2" fill="none"/><rect x="9" y="20" width="4" height="7" rx="2" fill="#9A3A1D"/><rect x="27" y="20" width="4" height="7" rx="2" fill="#9A3A1D"/><path d="M29 26q0 5-7 5" stroke="#9A3A1D" stroke-width="1.6" fill="none"/></svg>
+      <div><h3>Recall Agent</h3><div class="mod-tag">Front Desk &amp; CRM</div>
+        <p class="does">Finds patients overdue for the next stage of treatment and drafts reminders in their language. Books them into open chair slots.</p>
+        <dl><dt class="a">Alone</dt><dd>Sends reminders that use approved templates.</dd>
+            <dt class="h">Human</dt><dd>Front desk approves new wording; the dentist approves anything clinical.</dd>
+            <dt class="n">Never</dt><dd>Quotes one price for a treatment with a range. It always shows the full ladder.</dd></dl></div>
+    </div>
+    <div class="agent">
+      <svg class="face" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#D7E8E3"/><rect x="11" y="15" width="18" height="14" rx="1.5" fill="#0F4C4A"/><path d="M11 19h18" stroke="#D7E8E3" stroke-width="1.2"/><path d="M20 9v8M16 13l4 4 4-4" stroke="#0F4C4A" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      <div><h3>Restock Agent</h3><div class="mod-tag">Restock · Store</div>
+        <p class="does">Reads tomorrow's appointment book (three implant surgeries means three fixtures in the right sizes) and drafts the purchase order from the best contracted supplier.</p>
+        <dl><dt class="a">Alone</dt><dd>Orders under ₹5,000 from approved suppliers.</dd>
+            <dt class="h">Human</dt><dd>Owner approves anything above the limit with one tap.</dd>
+            <dt class="n">Never</dt><dd>Buys from an unapproved supplier or above contract price.</dd></dl></div>
+    </div>
+    <div class="agent">
+      <svg class="face" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#EFE6D6"/><rect x="12" y="9" width="16" height="22" rx="1.5" fill="#fff" stroke="#1E2422" stroke-width="1.2"/><path d="M15 15h10M15 19h10M15 23h6" stroke="#B9AE99" stroke-width="1.2"/><circle cx="27" cy="27" r="5" fill="none" stroke="#E2643F" stroke-width="2"/><path d="M30.5 30.5l3 3" stroke="#E2643F" stroke-width="2" stroke-linecap="round"/></svg>
+      <div><h3>Ledger Sentinel</h3><div class="mod-tag">Billing &amp; Ledger</div>
+        <p class="does">Flags unusual invoices: a bill above contract price, a duplicate invoice number, a GST mismatch, or a patient bill below the clinic's own price floor.</p>
+        <dl><dt class="a">Alone</dt><dd>Holds the payment and explains why in plain words.</dd>
+            <dt class="h">Human</dt><dd>The accountant releases or rejects it.</dd>
+            <dt class="n">Never</dt><dd>Moves money.</dd></dl></div>
+    </div>
+    <div class="agent">
+      <svg class="face" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#D7E8E3"/><path d="M14 11c-3 0-5 3-4 7 1 4 2 11 4 11 1 0 2-4 3-6h6c1 2 2 6 3 6 2 0 3-7 4-11 1-4-1-7-4-7-2 0-3 1-6 1s-4-1-6-1z" fill="#fff" stroke="#0F4C4A" stroke-width="1.4"/><circle cx="29" cy="12" r="4" fill="#E2643F"/></svg>
+      <div><h3>Lab Liaison</h3><div class="mod-tag">Lab Orders (production)</div>
+        <p class="does">Tracks every crown and aligner case at the lab, chases delays, and compares the delivered shade photo with the prescription before the patient arrives.</p>
+        <dl><dt class="a">Alone</dt><dd>Sends status chasers to the lab.</dd>
+            <dt class="h">Human</dt><dd>The dentist approves any remake request.</dd>
+            <dt class="n">Never</dt><dd>Accepts a case on the patient's behalf.</dd></dl></div>
+    </div>
+    <div class="agent wide">
+      <svg class="face" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#F8DDD2"/><path d="M20 8l11 4v8c0 7-5 11-11 13-6-2-11-6-11-13v-8z" fill="#fff" stroke="#9A3A1D" stroke-width="1.4"/><path d="M15 20h10M20 15v10" stroke="#E2643F" stroke-width="2.2" stroke-linecap="round"/></svg>
+      <div><h3>Lot Tracer</h3><div class="mod-tag">Quality &amp; Recall</div>
+        <p class="does">When a supplier recalls a batch, the Lot Tracer lists every patient treated with that lot within minutes, along with the stock still on your shelf, and drafts the clinic's response.</p>
+        <dl><dt class="a">Alone</dt><dd>Quarantines the affected stock in the system so it cannot be picked.</dd>
+            <dt class="h">Human</dt><dd>The dentist decides whether and how each patient is contacted.</dd>
+            <dt class="n">Never</dt><dd>Contacts a patient about a recall without the dentist's sign-off.</dd></dl></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:5mm;background:var(--sand);border:none">
+    <div class="kicker" style="margin-bottom:2mm">How every agent decides</div>
+    <svg viewBox="0 0 170 22" width="170mm" height="22mm" xmlns="http://www.w3.org/2000/svg" font-family="Manrope">
+      <defs><marker id="ar2" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0 0 L5 2.5 L0 5z" fill="#1E2422"/></marker></defs>
+      <g font-size="3"><rect x="0" y="3" width="36" height="16" rx="3" fill="#fff"/><text x="4" y="10" font-weight="700" fill="#E2643F">1 · Plan</text><text x="4" y="15" fill="#5D6762">reads the data, sets a goal</text>
+      <rect x="44" y="3" width="36" height="16" rx="3" fill="#fff"/><text x="48" y="10" font-weight="700" fill="#E2643F">2 · Check</text><text x="48" y="15" fill="#5D6762">runs every rule and limit</text>
+      <rect x="88" y="3" width="36" height="16" rx="3" fill="#fff"/><text x="92" y="10" font-weight="700" fill="#E2643F">3 · Act or ask</text><text x="92" y="15" fill="#5D6762">inside limits, or asks you</text>
+      <rect x="132" y="3" width="36" height="16" rx="3" fill="#0F4C4A"/><text x="136" y="10" font-weight="700" fill="#F5B39C">4 · Log</text><text x="136" y="15" fill="#CFE3DE">reasoning saved for audit</text></g>
+      <g stroke="#1E2422" stroke-width=".5" marker-end="url(#ar2)"><path d="M36.5 11 H43"/><path d="M80.5 11 H87"/><path d="M124.5 11 H131"/></g>
+    </svg>
+  </div>
+  <div class="folio"><span><b>Chairside</b> · AI and agentic features</span><span>04</span></div>
+</section>
+
+<!-- ============================================================ 5 HOW IT WORKS -->
+<section class="page">
+  <div class="kicker">04 · How it works</div>
+  <h2>Procure-to-pay, the Chairside way.</h2>
+  <p class="lede">Agents draft and check. People decide where it matters. Here is one complete cycle, from tomorrow's surgery list to a paid supplier.</p>
+  <div class="legend"><span class="pill ai">AI agent step</span><span class="pill hu">Human step</span></div>
+
+  <svg class="lanes" viewBox="0 0 178 92" width="178mm" height="92mm" xmlns="http://www.w3.org/2000/svg" font-family="Manrope">
+    <rect x="0" y="0" width="178" height="44" rx="3" fill="#F8DDD2" opacity=".55"/>
+    <rect x="0" y="48" width="178" height="44" rx="3" fill="#D7E8E3" opacity=".7"/>
+    <text x="4" y="7" font-size="3.4" font-weight="700" fill="#9A3A1D" letter-spacing=".3">AI AGENTS</text>
+    <text x="4" y="55" font-size="3.4" font-weight="700" fill="#0F4C4A" letter-spacing=".3">PEOPLE</text>
+    <defs><marker id="ar" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0 0 L5 2.5 L0 5z" fill="#1E2422"/></marker></defs>
+    <g stroke="#1E2422" stroke-width=".45" fill="none" marker-end="url(#ar)">
+      <path d="M30 23 H34.5"/><path d="M47 35 L68 59.5"/><path d="M80 59.5 L95 35"/><path d="M107 35 L120 59.5"/>
+      <path d="M132 59.5 L145 35"/><path d="M157 35 L160 59.5"/>
+    </g>
+    <g font-size="2.55" fill="#1E2422">
+      <rect x="6" y="11" width="24" height="24" rx="2" fill="#fff" stroke="#E2643F" stroke-width=".5"/>
+      <text x="8" y="16" font-weight="700" fill="#E2643F">1</text><text x="8" y="21">Restock Agent</text><text x="8" y="24.5">reads tomorrow's</text><text x="8" y="28">surgery list</text><text x="8" y="31.5">and stock</text>
+
+      <rect x="35" y="11" width="24" height="24" rx="2" fill="#fff" stroke="#E2643F" stroke-width=".5"/>
+      <text x="37" y="16" font-weight="700" fill="#E2643F">2</text><text x="37" y="21">Drafts the PO,</text><text x="37" y="24.5">picks supplier</text><text x="37" y="28">within contract</text>
+
+      <rect x="62" y="60" width="24" height="24" rx="2" fill="#fff" stroke="#0F4C4A" stroke-width=".5"/>
+      <text x="64" y="65" font-weight="700" fill="#0F4C4A">3</text><text x="64" y="70">Owner approves</text><text x="64" y="73.5">on phone (only</text><text x="64" y="77">over ₹5,000)</text>
+
+      <rect x="89" y="11" width="24" height="24" rx="2" fill="#fff" stroke="#E2643F" stroke-width=".5"/>
+      <text x="91" y="16" font-weight="700" fill="#E2643F">4</text><text x="91" y="21">Sends the PO,</text><text x="91" y="24.5">tracks dispatch</text><text x="91" y="28">and arrival</text>
+
+      <rect x="114" y="60" width="24" height="24" rx="2" fill="#fff" stroke="#0F4C4A" stroke-width=".5"/>
+      <text x="116" y="65" font-weight="700" fill="#0F4C4A">5</text><text x="116" y="70">Assistant scans</text><text x="116" y="73.5">batch + expiry</text><text x="116" y="77">at delivery</text>
+
+      <rect x="141" y="11" width="24" height="24" rx="2" fill="#fff" stroke="#E2643F" stroke-width=".5"/>
+      <text x="143" y="16" font-weight="700" fill="#E2643F">6</text><text x="143" y="21">Ledger Sentinel</text><text x="143" y="24.5">matches order,</text><text x="143" y="28">receipt and bill</text>
+
+      <rect x="148" y="60" width="24" height="24" rx="2" fill="#fff" stroke="#0F4C4A" stroke-width=".5"/>
+      <text x="150" y="65" font-weight="700" fill="#0F4C4A">7</text><text x="150" y="70">Accountant</text><text x="150" y="73.5">releases the</text><text x="150" y="77">payment</text>
+    </g>
+    <text x="4" y="46.9" font-size="2.5" fill="#9A3A1D">8 · Every agent step is written to the audit trail with its reasoning.</text>
+  </svg>
+  <p class="blurb">Seven visible steps, three human decisions. The agent never reaches the money without a person.</p>
+
+  <div class="steps">
+    <div class="card"><b>4</b><span style="font-weight:700">agent steps</span><p>Planning, drafting, tracking and matching: the repetitive work that used to happen after hours.</p></div>
+    <div class="card"><b>3</b><span style="font-weight:700">human gates</span><p>Spend approval, physical receipt, payment release. Each one is a single tap with the context already attached.</p></div>
+    <div class="card"><b>0</b><span style="font-weight:700">silent actions</span><p>Every step is logged with inputs, reasoning and approver. Replay any order from start to finish.</p></div>
+    <div class="card"><b>1</b><span style="font-weight:700">source of truth</span><p>Stock, batches, orders and ledger share one record, so the agent and the accountant see the same numbers.</p></div>
+  </div>
+
+  <div class="card" style="margin-top:6mm;background:var(--sand);border:none">
+    <h3>The same pattern runs order-to-cash.</h3>
+    <p style="color:var(--muted);font-size:8.6pt">The Recall Agent finds the overdue patient and books the slot. The dentist treats. Billing raises the invoice from the treatment plan. The Sentinel checks it against the price ladder before it goes out. The front desk collects the payment.</p>
+  </div>
+  <div class="folio"><span><b>Chairside</b> · How it works</span><span>05</span></div>
+</section>
+
+<!-- ============================================================ 6 TRUST -->
+<section class="page">
+  <div class="kicker">05 · Trust &amp; security</div>
+  <h2>Autonomy you can audit.<br>No mistake made twice.</h2>
+  <p class="lede" style="margin-bottom:5mm">Agents in a clinic touch patient data, money and medicine. Chairside controls them with limits you set, rules they cannot break, and a record of everything they do.</p>
+
+  <div class="trust">
+    <div class="card">
+      <h3>The Autonomy Dial</h3>
+      <svg viewBox="0 0 80 44" width="80mm" height="40mm" xmlns="http://www.w3.org/2000/svg" font-family="Manrope">
+        <path d="M8 40 A32 32 0 0 1 72 40" fill="none" stroke="#EFE6D6" stroke-width="7"/>
+        <path d="M8 40 A32 32 0 0 1 30 10" fill="none" stroke="#1D6B67" stroke-width="7"/>
+        <path d="M30 10 A32 32 0 0 1 50 10" fill="none" stroke="#E2643F" stroke-width="7"/>
+        <line x1="40" y1="40" x2="47" y2="13" stroke="#1E2422" stroke-width="1.4" stroke-linecap="round"/><circle cx="40" cy="40" r="2.4" fill="#1E2422"/>
+        <g font-size="3" fill="#5D6762"><text x="1" y="43">L0</text><text x="9" y="18">L1</text><text x="27" y="5">L2</text><text x="50" y="5">L3</text><text x="71" y="18">L4</text></g>
+      </svg>
+      <p><b>L0 Observe · L1 Suggest · L2 Draft · L3 Act with approval · L4 Act within limits.</b> Set per agent, per clinic. New clinics start at L1, and an agent moves up only after a clean track record. One tap pauses every agent.</p>
+    </div>
+    <div class="story">
+      <div class="kicker" style="color:#F5B39C">Precedent Ledger</div>
+      <h3>Corrections become rules, not reminders.</h3>
+      <blockquote>“Sentinel once let a duplicate glove invoice through. Sunita rejected it. From that day, a duplicate invoice number from any supplier is blocked before payment.”</blockquote>
+      <p>When a person corrects an agent, Chairside records the case and compiles it into a <b>blocking check</b> that runs before the agent acts again. It is enforced in code, not left as a note in a prompt the agent might ignore.</p>
+    </div>
+    <div class="card">
+      <h3>Policy Compiler</h3>
+      <p>Upload your clinic's SOPs and price policy. Chairside turns each sentence it can into an enforced rule, and a coverage meter shows you honestly how much of the policy is actually enforced.</p>
+      <svg viewBox="0 0 80 18" width="80mm" height="16mm" xmlns="http://www.w3.org/2000/svg" font-family="Manrope">
+        <rect x="0" y="6" width="80" height="6" rx="3" fill="#EFE6D6"/><rect x="0" y="6" width="62" height="6" rx="3" fill="#0F4C4A"/>
+        <text x="0" y="4" font-size="3" fill="#5D6762">Sample clinic policy: 41 of 52 sentences enforced</text>
+        <text x="64" y="17" font-size="3" fill="#9A3A1D" font-weight="700">11 need review</text>
+      </svg>
+    </div>
+    <div class="card">
+      <h3>Hard limits, always on</h3>
+      <p>Spend caps per agent · supplier allow-lists · dual approval on payments · agents never diagnose or prescribe · a full, replayable audit trail of inputs, reasoning and approver for every action.</p>
+    </div>
+  </div>
+
+  <div class="promises">
+    <div><b>Built for the DPDP Act, 2023</b>Consent, purpose limits and data-principal requests are handled in the product.</div>
+    <div><b>Hosted in India</b>Patient and business data stays in Indian data centres, encrypted in transit and at rest.</div>
+    <div><b>Your data stays yours</b>Patient identifiers are masked before any AI model sees them. Patient data never trains shared models.</div>
+    <div><b>Role-based access</b>Front desk, assistants, doctors and owners each see only what their job needs.</div>
+    <div><b>Clinical boundary</b>Clinical decisions stay with the dentist. Agents prepare, people decide.</div>
+    <div><b>Exit any time</b>Export your full patient, stock and ledger data in open formats whenever you choose.</div>
+  </div>
+  <div class="folio"><span><b>Chairside</b> · Trust &amp; security</span><span>06</span></div>
+</section>
+
+<!-- ============================================================ 7 SERVICES -->
+<section class="page">
+  <div class="kicker">06 · Getting started</div>
+  <h2>From Excel to Chairside<br>in two weeks.</h2>
+  <p class="lede">Every plan includes guided implementation. We do the heavy lifting; your team keeps seeing patients.</p>
+  <div class="timeline">
+    <div><div class="dot"></div><h3>Days 1–3 · Discover</h3><p>We map your chairs, staff, suppliers and price list, and agree each agent's starting autonomy level.</p></div>
+    <div><div class="dot"></div><h3>Days 4–7 · Migrate</h3><p>Patient list, open treatment plans, stock with batches and expiry, supplier contracts and opening balances.</p></div>
+    <div><div class="dot"></div><h3>Days 8–11 · Train</h3><p>Chairside sessions for the front desk, assistants and doctors, plus an owner session on approvals and Pulse.</p></div>
+    <div><div class="dot"></div><h3>Days 12–14 · Go live</h3><p>Agents start at L1 (Suggest). We review the first week together and raise autonomy only where it has been earned.</p></div>
+  </div>
+
+  <svg viewBox="0 0 178 70" width="178mm" height="58mm" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" font-family="Manrope">
+    <rect width="178" height="70" rx="4" fill="#D7E8E3"/>
+    <rect x="0" y="54" width="178" height="16" fill="#C4DDD6"/>
+    <!-- chair -->
+    <g stroke="#0F4C4A" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M44 30 Q40 30 40 35 L38 46 Q38 50 43 50 L82 51 Q88 51 92 56"/><ellipse cx="45" cy="28.5" rx="5" ry="2.2" fill="#0F4C4A"/>
+      <path d="M62 51 L62 60"/><path d="M52 62 L72 62"/>
+    </g>
+    <!-- trainer and staff -->
+    <g>
+      <circle cx="112" cy="20" r="5" fill="#9A3A1D"/><path d="M104 54 Q104 30 112 28 Q120 30 120 54 Z" fill="#E2643F"/>
+      <rect x="120" y="30" width="14" height="10" rx="1.5" fill="#FAF6EE" stroke="#1E2422" stroke-width=".5" transform="rotate(-8 127 35)"/>
+      <circle cx="146" cy="24" r="4.4" fill="#0F4C4A"/><path d="M139 54 Q139 33 146 31 Q153 33 153 54 Z" fill="#1D6B67"/>
+      <circle cx="162" cy="25" r="4.2" fill="#1E2422"/><path d="M156 54 Q156 34 162 32 Q168 34 168 54 Z" fill="#FAF6EE" stroke="#0F4C4A" stroke-width=".5"/>
+    </g>
+    <text x="8" y="12" font-size="4.4" fill="#0F4C4A" font-family="Fraunces">Training happens at the chair,</text>
+    <text x="8" y="17.5" font-size="4.4" fill="#0F4C4A" font-family="Fraunces">not in a classroom.</text>
+  </svg>
+  <p class="blurb">On-site training with the people who actually use the system, in the language they work in.</p>
+
+  <div class="grid" style="grid-template-columns:repeat(3,1fr);margin:6mm 0">
+    <div class="card"><h3>Support</h3><p style="color:var(--muted);font-size:8.4pt">WhatsApp and phone, 9 am to 8 pm, Monday to Saturday. Priority line on Group plans.</p></div>
+    <div class="card"><h3>Agent Tuning</h3><p style="color:var(--muted);font-size:8.4pt">Monthly review of your Precedent Ledger: what the agents did, what you corrected, which rules were added.</p></div>
+    <div class="card"><h3>Supplier Network</h3><p style="color:var(--muted);font-size:8.4pt">Your distributors connect directly, so the Restock Agent orders from live catalogues and contract prices.</p></div>
+  </div>
+
+  <div class="quote">
+    <div><div class="kicker">Pilot partner</div>
+      <blockquote>“Clinics on the network now order off tomorrow's surgery list instead of last month's habit. We see the demand before the phone rings.”</blockquote>
+      <cite>Operations team, Cusp Dental Supplies Pvt. Ltd., Bengaluru · Supplier Network pilot (fictional company, illustrative quote)</cite></div>
+    <svg viewBox="0 0 46 46" width="46mm" height="46mm"><circle cx="23" cy="23" r="22" fill="#FAF6EE"/><path d="M12 17 23 11l11 6v14H12z" fill="#0F4C4A"/><rect x="16" y="21" width="5" height="10" fill="#E2643F"/><rect x="25" y="21" width="5" height="5" fill="#D7E8E3"/><text x="23" y="40" font-size="3.6" text-anchor="middle" fill="#0F4C4A" font-family="Fraunces">Cusp Dental</text></svg>
+  </div>
+  <div class="folio"><span><b>Chairside</b> · Services</span><span>07</span></div>
+</section>
+
+<!-- ============================================================ 8 PRICING -->
+<section class="page">
+  <div class="kicker">07 · Plans &amp; pricing</div>
+  <h2>Priced per clinic, not per click.</h2>
+  <p class="lede" style="margin-bottom:5mm">All prices in INR per month, billed annually, plus GST. Every plan includes implementation support and training.</p>
+  <table class="price"><tr>
+    <td><h3>Solo</h3><div class="for">1–2 chairs</div><div class="amt">₹2,499</div><div class="per">per clinic / month</div>
+      <ul><li>Front Desk, Billing, Store</li><li>Recall Agent up to L2</li><li>Pulse dashboard</li><li>WhatsApp support</li></ul></td>
+    <td class="hot"><h3>Practice</h3><div class="for">3–8 chairs · most popular</div><div class="amt">₹6,999</div><div class="per">per clinic / month</div>
+      <ul><li>All 8 modules</li><li>All 5 agents up to L3</li><li>Precedent Ledger</li><li>Monthly Agent Tuning</li></ul></td>
+    <td><h3>Group</h3><div class="for">Chains with 3+ branches</div><div class="amt">₹1,199</div><div class="per">per chair / month (min. 20)</div>
+      <ul><li>L4 autonomy within limits</li><li>Policy Compiler</li><li>Cross-branch stock and SSO</li><li>Priority support line</li></ul></td>
+    <td><h3>Supplier Network</h3><div class="for">Distributors and labs</div><div class="amt">₹14,999</div><div class="per">per warehouse / month</div>
+      <ul><li>Clinic ordering portal</li><li>Restock Agent integration</li><li>Batch recall broadcast</li><li>Demand forecast feed</li></ul></td>
+  </tr></table>
+  <p style="font-size:8pt;color:var(--muted);margin-top:3mm">One-time implementation: ₹25,000 for Solo and Practice; quoted for Group and Supplier Network. Free 30-day pilot for clinics in Bengaluru.</p>
+
+  <div class="bottom">
+    <div>
+      <div class="kicker">Leadership team</div>
+      <div class="officers">
+        <div class="officer"><div class="mono">{{M1_INIT}}</div><div><b>{{M1_NAME}}</b><span>Chief Executive Officer · {{M1_SRN}}</span></div></div>
+        <div class="officer"><div class="mono">{{M2_INIT}}</div><div><b>{{M2_NAME}}</b><span>Chief Technology Officer · {{M2_SRN}}</span></div></div>
+        <div class="officer"><div class="mono">{{M3_INIT}}</div><div><b>{{M3_NAME}}</b><span>Chief Product Officer · {{M3_SRN}}</span></div></div>
+        <div class="officer"><div class="mono">{{M4_INIT}}</div><div><b>{{M4_NAME}}</b><span>Head of Trust &amp; Safety · {{M4_SRN}}</span></div></div>
+      </div>
+    </div>
+    <div class="contact">
+      <div class="kicker">Contact</div>
+      <p><b>Chairside Labs Pvt. Ltd.</b></p>
+      <p>4th Floor, 80 Feet Road, Koramangala 4th Block, Bengaluru 560034</p>
+      <p>hello@chairside.example · +91 80 0000 0000</p>
+      <p>Book a demo at the chair: demo.chairside.example</p>
+      <svg width="30mm" height="10mm" viewBox="0 0 90 30" style="margin-top:2mm"><path d="M20 6 A11 11 0 1 0 20 24" fill="none" stroke="#0F4C4A" stroke-width="3.2" stroke-linecap="round"/><path d="M4 21 L18 21" stroke="#0F4C4A" stroke-width="3.2" stroke-linecap="round"/><path d="M22 2 l1.2 3 3 1.2 -3 1.2 -1.2 3 -1.2 -3 -3 -1.2 3 -1.2z" fill="#E2643F"/><text x="31" y="20" font-family="Fraunces" font-size="13" fill="#0F4C4A">Chairside</text></svg>
+    </div>
+  </div>
+
+  <div class="sources">
+    <b>About this brochure.</b> Chairside, Chairside Labs Pvt. Ltd. and Cusp Dental Supplies Pvt. Ltd. are fictional, created for the UE24CS343AB8 EBS course project (Aug–Dec 2026). Prices, quotes and the sample policy figures are illustrative. All illustrations, the logo and diagrams are original work by the team.<br>
+    <b>Sources.</b> Digital Personal Data Protection Act, 2023 (Act No. 22 of 2023), India Code: https://www.indiacode.nic.in/bitstream/123456789/22037/2/a2023-22.pdf ·
+    GST on medical and dental devices cut to 5% from 22 Sept 2025, Business Standard: https://www.business-standard.com/industry/news/gst-cut-patient-benefits-cos-margin-pressure-125090401185_1.html ·
+    Treatment price ranges in Bengaluru clinics (crown materials ₹4,000–₹14,000): team field research from published clinic price lists, 2026.
+  </div>
+  <div class="folio"><span><b>Chairside</b> · Plans &amp; contacts</span><span>08</span></div>
+</section>
+</body>
+</html>

@@ -1,0 +1,25 @@
+$ lsb_release -d
+Description:	Ubuntu 24.04.3 LTS
+$ bench --version
+5.31.1
+$ bench version
+erpnext 15.124.5
+frappe 15.126.0
+$ bench --site cusp.localhost list-apps
+
+frappe  15.126.0 version-15
+erpnext 15.124.5 version-15
+
+$ mariadb --version
+mariadb  Ver 15.1 Distrib 10.11.14-MariaDB, for debian-linux-gnu (x86_64) using  EditLine wrapper
+$ redis-server --version
+Redis server v=7.0.15 sha=00000000:0 malloc=jemalloc-5.3.0 bits=64 build=d064f9f48c901a92
+$ node --version && python3 --version
+v20.20.2
+Python 3.12.3
+$ bench --site cusp.localhost doctor | head -4
+-----Checking scheduler status-----
+Workers online: 1
+-----cusp.localhost Jobs-----
+$ curl -s http://localhost:8000/api/method/ping
+{"message":"pong"}
