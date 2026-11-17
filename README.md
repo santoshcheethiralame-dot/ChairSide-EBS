@@ -79,4 +79,6 @@ Outputs are written to the `out/` directory.
 
 ## 👥 Team
 - **Santosh Cheethirala** (PES1UG24CS127) - *Sales Manager*
+- **Darshan GS** (PES1UG24CS138) 
+- **Vibhav M ** (PES1UG24CS527) 
 - Team members configured in `setup/team.json`.
